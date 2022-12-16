@@ -90,3 +90,39 @@ print(f"El label que tiene el botón es: {labelVaciarCarrito}")
 print("------------------------------------------------------------------------------------------")
 
 driver.find_element(By.XPATH, "/html/body/div[6]/div/div[1]/button").click()
+# Tercer script y validación del label del botón "FINALIZAR COMPRA". Se valida previamente que esté habilitado.
+time.sleep(2)
+driver.find_element(By.XPATH, '//*[@id="downshift-0-input"]').send_keys("toallón playero")
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/div/div/div[1]/div/div/div[1]/div/label/div/span/div/div/button").click()
+time.sleep(15)
+# driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/a[2]").click()
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div[2]/div/div/section/div[2]/div/div[4]/div/div[2]/div/div[2]/div[2]/div[1]/section/a/article/div[2]/div[1]/div/div/img[1]").click()
+time.sleep(15)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[1]/div/div/div/div/div/div/div[1]/button").click()
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[1]/div/div/div/div/div/div/div[1]/button").click()
+time.sleep(1)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[2]/div/div/button").click()
+time.sleep(5)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/div/div/div[3]/aside/div/div/button").click()
+time.sleep(5)
+
+# Validación label boton comprar y que el botón está habilitado.
+botonComprar = driver.find_element(By.XPATH, "/html/body/div[6]/div/div[2]/div/div/div[4]/div/div/div/div[2]/div/button")
+labelBotonComprar = botonComprar.text
+
+if botonComprar.is_enabled():
+    print("El botón FINALIZAR COMPRA está habilitado")
+else:
+    print("El botón FINALIZAR COMPRA no está habilitado")
+
+labelRequerido = "FINALIZAR COMPRA"
+print(f"El label requerido es: {labelRequerido}")
+
+check_label(labelBotonComprar)
+print(f"El label que tiene el botón es: {labelBotonComprar}")
+
+# Validación alternativa con assert
+
+assert labelBotonComprar == labelRequerido
+
+driver.close()
