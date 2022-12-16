@@ -23,3 +23,41 @@ driver.find_element(By.XPATH, "/html/body/div[7]/div/div/div/div/div/div[2]/div/
 time.sleep(8)
 print("-----------------------------------------------------------------------------------------------------------")
 # driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/a[2]").click()
+# Primer script y validación label del botón "AGREGAR".
+driver.find_element(By.XPATH, '//*[@id="downshift-0-input"]').send_keys("juego de sábanas 1 plaza")
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/div/div/div[1]/div/div/div[1]/div/label/div/span/div/div/button").click()
+time.sleep(15)
+
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div[2]/div/div/section/div[2]/div/div[4]/div/div[2]/div/div[2]/div[2]/div[1]/section/a/article/div[2]/div[1]/div/div/img[1]").click()
+time.sleep(15)
+
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[4]/div/div/div/div").click()
+driver.find_element(By.XPATH, "/html/body/div[8]/div[1]/div/button").click()
+
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[1]/div/div/div/div/div/div/div[1]/button").click()
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[1]/div/div/div/div/div/div/div[1]/button").click()
+time.sleep(1)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[2]/div/div/button").click()
+time.sleep(5)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/div/div/div[3]/aside/div/div/button").click()
+time.sleep(8)
+driver.find_element(By.XPATH, "/html/body/div[6]/div/div[1]/button").click()
+time.sleep(5)
+
+# Validación label boton "AGREGAR"
+print("----------------------------------------------------------------------------------------")
+botonAgregar = driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/div[2]/section/div/div[2]/div/div[5]/div/div/div[2]/div/div/button")
+labelBotonAgregar = botonAgregar.text
+
+labelRequerido = "AGREGAR"
+
+print(f"El label requerido del botón: {labelRequerido}")
+
+def check_label(s):
+    if re.match(labelRequerido, s):
+        print("Pass")
+    else:
+        print("Fail")
+check_label(labelBotonAgregar)
+print(f"El label que tiene el botón es: {labelBotonAgregar}")
+print("---------------------------------------------------------------------------------------------")
